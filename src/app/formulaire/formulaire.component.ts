@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-formulaire',
@@ -13,10 +14,24 @@ export class FormulaireComponent implements OnInit {
   streetAddress = new FormControl('');
   postalAddress = new FormControl('');
   townAddress = new FormControl('');
+  user: User = new User();
+
+  listUser: User[];
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  createUser() {
+    this.user.name = this.username.value;
+    this.user.email = this.email.value;
+    this.user.password = this.password.value;
+    this.user.postalAddress = this.postalAddress.value;
+    this.user.streetAddress = this.streetAddress.value;
+    this.user.townAddress = this.townAddress.value;
+
+    this.listUser.push(this.user);
+
+  }
 }

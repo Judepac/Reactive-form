@@ -23,11 +23,11 @@
     <input type="text" [formControl]='townAddress'>
   </label>
   <br>
-  <button>Inscription</button>
+  <button (click)="createUser()">Inscription</button>
 </div>
 <div>
-  Nom: {{username.value}} <br>
-  eMail: {{email.value}} <br>
-  Mot de passe: {{password.value}} <br>
-  Adresse: {{streetAddress.value}} {{postalAddress.value}} {{townAddress.value}}
+  Nom: {{user.name}} <br>
+  eMail: {{user.email}} <br>
+  Mot de passe: {{user.password}} <br>
+  Adresse: {{user.streetAddress}} {{user.postalAddress}} {{user.townAddress}}
 </div>
