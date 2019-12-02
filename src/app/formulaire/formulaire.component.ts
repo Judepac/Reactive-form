@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl , FormGroup } from '@angular/forms';
+import { FormControl , FormGroup, Validators } from '@angular/forms';
 import { User } from '../model/user';
+import { emailValidator } from '../email-validator';
 
 @Component({
   selector: 'app-formulaire',
@@ -14,7 +15,7 @@ export class FormulaireComponent implements OnInit {
     postalAddress: new FormControl(''),
     townAddress: new FormControl(''),
     credentials: new FormGroup({
-      email: new FormControl(''),
+      email: new FormControl('', [Validators.required , emailValidator]),
       password: new FormControl('')
     })
   });
@@ -24,6 +25,9 @@ export class FormulaireComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+  get email1() {
+    return this.userForm.get('credentials.email');
   }
   onSubmit() {
     this.user.email = this.userForm.value.credentials.email;

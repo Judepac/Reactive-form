@@ -7,7 +7,12 @@
   <div formGroupName = "credentials">
     <label>
       Email:
-      <input type="email" formControlName='email'>
+      <input type="email" formControlName='email' required>
+      <div *ngIf="email1.errors && !email1.pristine" class="error-msg">
+          <div [hidden]="!email1.errors.required">email is required.</div>
+          <div [hidden]="!email1.errors.email">{{email1.errors.email.rules}}</div>
+      </div>
+
     </label> <br>
 
     <label>
@@ -24,8 +29,9 @@
     <input type="text" formControlName='townAddress'> <br>
   </label>
 
-  <button type="submit">Inscription</button>
+  <button type="submit" [disabled]=!userForm.valid>Inscription</button>
 </form>
+
 
 <div>
   Nom: {{user.name}} <br>
