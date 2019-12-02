@@ -1,33 +1,36 @@
-<div>
+<form [formGroup]='userForm' (ngSubmit)="onSubmit()">
   <label>
     Nom:
-    <input type="text" [formControl]='username'>
-  </label>
-  <br>
-  <label>
-    Email:
-    <input type="email" [formControl]='email'>
-  </label>
-  <br>
-  <label>
-    Mot de passe:
-    <input type="password" [formControl]='password'>
-  </label>
-  <br>
+    <input type="text" formControlName='username'>
+  </label> <br>
+
+  <div formGroupName = "credentials">
+    <label>
+      Email:
+      <input type="email" formControlName='email'>
+    </label> <br>
+
+    <label>
+      Mot de passe:
+      <input type="password" formControlName='password'>
+    </label>
+
+  </div> <br>
+
   <label>
     Adresse:
-    <input type="text" [formControl]='streetAddress'>
-    <br>
-    <input type="number" [formControl]='postalAddress'>
-    <br>
-    <input type="text" [formControl]='townAddress'>
+    <input type="text" formControlName='streetAddress'> <br>
+    <input type="number" formControlName='postalAddress'> <br>
+    <input type="text" formControlName='townAddress'> <br>
   </label>
-  <br>
-  <button (click)="createUser()">Inscription</button>
-</div>
+
+  <button type="submit">Inscription</button>
+</form>
+
 <div>
   Nom: {{user.name}} <br>
   eMail: {{user.email}} <br>
   Mot de passe: {{user.password}} <br>
   Adresse: {{user.streetAddress}} {{user.postalAddress}} {{user.townAddress}}
 </div>
+

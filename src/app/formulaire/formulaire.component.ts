@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl , FormGroup } from '@angular/forms';
 import { User } from '../model/user';
 
 @Component({
@@ -8,30 +8,31 @@ import { User } from '../model/user';
   styleUrls: ['./formulaire.component.scss']
 })
 export class FormulaireComponent implements OnInit {
-  username = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
-  streetAddress = new FormControl('');
-  postalAddress = new FormControl('');
-  townAddress = new FormControl('');
-  user: User = new User();
+  userForm = new FormGroup({
+    username: new FormControl(''),
+    streetAddress: new FormControl(''),
+    postalAddress: new FormControl(''),
+    townAddress: new FormControl(''),
+    credentials: new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    })
+  });
 
-  listUser: User[];
+  user: User = new User();
 
   constructor() { }
 
   ngOnInit() {
   }
+  onSubmit() {
+    this.user.email = this.userForm.value.credentials.email;
+    this.user.password = this.userForm.value.credentials.password;
+    this.user.name = this.userForm.value.username;
+    this.user.streetAddress = this.userForm.value.streetAddress;
+    this.user.townAddress = this.userForm.value.townAddress;
+    this.user.postalAddress = this.userForm.value.postalAddress;
 
-  createUser() {
-    this.user.name = this.username.value;
-    this.user.email = this.email.value;
-    this.user.password = this.password.value;
-    this.user.postalAddress = this.postalAddress.value;
-    this.user.streetAddress = this.streetAddress.value;
-    this.user.townAddress = this.townAddress.value;
-
-    this.listUser.push(this.user);
-
+    console.log(this.userForm.value);
   }
 }
