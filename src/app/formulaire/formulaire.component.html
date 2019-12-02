@@ -1,0 +1,33 @@
+<div>
+  <label>
+    Nom:
+    <input type="text" [formControl]='username'>
+  </label>
+  <br>
+  <label>
+    Email:
+    <input type="email" [formControl]='email'>
+  </label>
+  <br>
+  <label>
+    Mot de passe:
+    <input type="password" [formControl]='password'>
+  </label>
+  <br>
+  <label>
+    Adresse:
+    <input type="text" [formControl]='streetAddress'>
+    <br>
+    <input type="number" [formControl]='postalAddress'>
+    <br>
+    <input type="text" [formControl]='townAddress'>
+  </label>
+  <br>
+  <button>Inscription</button>
+</div>
+<div>
+  Nom: {{username.value}} <br>
+  eMail: {{email.value}} <br>
+  Mot de passe: {{password.value}} <br>
+  Adresse: {{streetAddress.value}} {{postalAddress.value}} {{townAddress.value}}
+</div>
